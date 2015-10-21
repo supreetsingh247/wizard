@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <title>Wizard</title>
+    <link rel="stylesheet" href="js/libs/angular-material.css">
+    <script src="js/libs/angular1/angular/angular.js"></script>
+    <script src="js/libs/angular1/angular/angular-route.js"></script>
+    <script src="js/mainController.js"></script>
+    <script src="js/libs/angular1/angular-messages/angular-messages.js"></script>
+    <script src="js/libs/angular1/angular-material/angular-material.js"></script>
+    <script src="js/libs/angular1/angular-animate/angular-animate.js"></script>
+    <script src="js/libs/angular1/angular-aria/angular-aria.js"></script>
+</head>
+<body ng-controller="mainController">
+<md-toolbar class="md-default-theme">
+    <div class="md-toolbar-tools">
+        <div flex="40"></div>
+        <h2>
+            <span class="md-title">Add new Promotion</span>
+        </h2>
+    </div>
+</md-toolbar>
+<div layout="row">
+    <div flex="20"></div>
+    <md-card flex class="ng-scope md-default-theme">
+        <md-card-content>
+            <div ng-cloak>
+                <md-content>
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="one">
+                            <div layout="row">
+                                <div flex="30"></div>
+                                <md-card flex class="ng-scope md-default-theme">
+                                    <md-card-content>
+                                        <form name="myForm1">
+                                            <md-input-container style="width: 300px">
+                                                <label>Rule Name</label>
+                                                <input name="conditionName" ng-model="conditionName" required=""
+                                                       id="JSONNameTextBox">
+                                                <div ng-messages="myForm1.conditionName.$error" role="alert">
+                                                    <div ng-message="required">This is required.</div>
+                                                </div>
+                                            </md-input-container>
+                                        </form>
+                                        <div id="editRule"></div>
+                                        <div id="listHolder"></div>
+                                    </md-card-content>
+                                </md-card>
+                                <div flex="30"></div>
+                            </div>
+                        </md-tab>
+                        <md-tab label="two" ng-disabled="!conditionName">
+                            <div layout="row">
+                                <div flex="30"></div>
+                                <md-card flex class="ng-scope md-default-theme">
+                                    <md-card-content>
+                                        <md-button class="md-raised md-primary" ng-click="createNewElement()">Add
+                                            Condition
+                                        </md-button>
+                                        <md-button class="md-raised" ng-click="addLevel()">Add Level</md-button>
+                                    </md-card-content>
+                                </md-card>
+                                <div flex="30"></div>
+                            </div>
+                        </md-tab>
+                        <md-tab label="three" ng-disabled="!conditionName">
+                            <div layout="row">
+                                <div flex="20"></div>
+                                <md-card flex class="ng-scope md-default-theme">
+                                    <md-card-content>
+                                        <form name="myForm2">
+                                            <md-input-container>
+                                                <label>Enter Offer Text</label>
+                                                <input name="conditionText" ng-model="conditionText" required=""
+                                                       id="values.conditionText">{{conditionText}}
+                                                <div ng-messages="myForm2.conditionText.$error" role="alert">
+                                                    <div ng-message="required">This is required.</div>
+                                                </div>
+                                            </md-input-container>
+                                        </form>
+                                    </md-card-content>
+                                </md-card>
+                                <div flex="20"></div>
+                            </div>
+                        </md-tab>
+                        <md-tab label="four" ng-disabled="!conditionText || !conditionName">
+                            <div layout="row">
+                                <div flex="20"></div>
+                                <md-card flex class="ng-scope md-default-theme">
+                                    <md-card-content>
+                                        <md-input-container>
+                                            <label>Active Status</label>
+                                            <md-select ng-model="active">
+                                                <md-option value="1">Active</md-option>
+                                                <md-option value="0">Inactive</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <md-input-container style="width: 100px">
+                                            <label>Probability</label>
+                                            <md-select ng-model="probability">
+                                                <md-option value=0.1>10 %</md-option>
+                                                <md-option value=0.2>20 %</md-option>
+                                                <md-option value=0.3>30 %</md-option>
+                                                <md-option value=0.4>40 %</md-option>
+                                                <md-option value=0.5>50 %</md-option>
+                                                <md-option value=0.6>60 %</md-option>
+                                                <md-option value=0.7>70 %</md-option>
+                                                <md-option value=0.8>80 %</md-option>
+                                                <md-option value=0.9>90 %</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <form name="myForm5">
+                                            <md-input-container style="width: 50px" style="width: 120px">
+                                                <label>Expire After</label>
+                                                <input type="number" name="expireAfter" ng-model="expireAfter" required
+                                                       id="expireAfter">
+                                                <div ng-messages="myForm5.expireAfter.$error" role="alert">
+                                                    <div ng-message="required">Required</div>
+                                                </div>
+                                            </md-input-container>
+                                        </form>
+                                        <p>
+                                            <md-button class="md-raised md-warn" ng-click="populateRule()">Save
+                                            </md-button>
+                                            <br>
+                                            <md-button class="md-raised md-primary" href="#/main">Go To Home Page
+                                            </md-button>
+                                        </p>
+                                    </md-card-content>
+                                </md-card>
+                                <div flex="20"></div>
+                            </div>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
+        </md-card-content>
+    </md-card>
+    <div flex="20"></div>
+</div>
+</body>
+</html>
